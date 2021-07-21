@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id      String  @id @default(uuid())
+  name    String
+  logoUrl String?
+  linkUrl String?
+  jobs    Job[]
+}
+
+model Job {
+  id          String    @id @default(uuid())
+  name        String
+  description String    @db.Text
+  startDate   DateTime
+  endDate     DateTime
+  company     Company   @relation(fields: [companyId], references: [id])
+  companyId   String
+  projects    Project[]
+}
+
+model Project {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  startDate   DateTime
+  endDate     DateTime
+  logoUrl     String?
+  linkUrl     String?
+  picture     String?
+  githubUrl   String?
+  job         Job?        @relation(fields: [jobId], references: [id])
+  jobId       String?
+  stack       Stack       @relation(fields: [stackId], references: [id])
+  stackId     String
+  formations  Formation[]
+}
+
+model Stack {
+  id       String    @id @default(uuid())
+  name     String
+  linksUrl String
+  logoUrl  String?
+  projects Project[]
+}
+
+model Formation {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  country     String
+  level       String
+  project     Project[] @relation(fields: [projectId], references: [id])
+  projectId   String
+}
+
+model Info {
+  id          String @id @default(uuid())
+  name        String
+  description String
+}
+
+model Content {
+  id          String @id @default(uuid())
+  name        String
+  description String
+}
