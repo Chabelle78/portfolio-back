@@ -1,0 +1,11 @@
+const prisma = require("./../../../../prismaClient");
+
+module.exports = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const project = await prisma.project.findUnique({ where: { id } });
+    res.status(200).json(project);
+  } catch (error) {
+    next(error);
+  }
+};

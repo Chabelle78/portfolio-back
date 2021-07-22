@@ -1,0 +1,36 @@
+GET http://localhost:5000/api/v1/companies/
+
+###
+GET http://localhost:5000/api/v1/companies/1
+
+###
+GET http://localhost:5000/api/v1/formations
+
+###
+GET http://localhost:5000/api/v1/formations/1
+
+###
+GET http://localhost:5000/api/v1/jobs
+
+###
+GET http://localhost:5000/api/v1/jobs/2
+
+###
+GET http://localhost:5000/api/v1/pictures
+###
+GET http://localhost:5000/api/v1/pictures/1
+
+###
+GET http://localhost:5000/api/v1/projects
+###
+GET http://localhost:5000/api/v1/projects/3
+
+###
+GET http://localhost:5000/api/v1/stacks
+###
+GET http://localhost:5000/api/v1/stacks/18
+
+
+
+
+

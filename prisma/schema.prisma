@@ -27,31 +27,33 @@ model Job {
   company     Company   @relation(fields: [companyId], references: [id])
   companyId   String
   projects    Project[]
+
 }
 
 model Project {
-  id          String      @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
   description String
   startDate   DateTime
   endDate     DateTime
-  logoUrl     String?
-  linkUrl     String?
-  picture     String?
-  githubUrl   String?
-  job         Job?        @relation(fields: [jobId], references: [id])
-  jobId       String?
-  stack       Stack       @relation(fields: [stackId], references: [id])
-  stackId     String
-  formations  Formation[]
+  logoUrl     String
+  linkUrl     String
+  github      String?
+  job         Job?      @relation(fields: [jobId], references: [id])
+  jobId       String
+  stacks      Stack[]
+  formation   Formation @relation(fields: [formationId], references: [id])
+  formationId String
+  pictures    Picture[]
+
 }
 
 model Stack {
   id       String    @id @default(uuid())
   name     String
-  linksUrl String
-  logoUrl  String?
   projects Project[]
+  pictures Picture[]
+
 }
 
 model Formation {
@@ -60,8 +62,12 @@ model Formation {
   description String
   country     String
   level       String
-  project     Project[] @relation(fields: [projectId], references: [id])
-  projectId   String
+  startDate   DateTime
+  endDate     DateTime
+  schoolName  String
+  projects    Project[]
+  pictures    Picture[]
+
 }
 
 model Info {
@@ -74,4 +80,15 @@ model Content {
   id          String @id @default(uuid())
   name        String
   description String
+}
+
+model Picture {
+  id          String     @id @default(uuid())
+  url         String
+  project     Project?   @relation(fields: [projectId], references: [id])
+  projectId   String?
+  Stack       Stack?     @relation(fields: [stackId], references: [id])
+  stackId     String?
+  Formation   Formation? @relation(fields: [formationId], references: [id])
+  formationId String?
 }
