@@ -23,13 +23,18 @@ GET http://localhost:5000/api/v1/pictures/1
 ###
 GET http://localhost:5000/api/v1/projects
 ###
-GET http://localhost:5000/api/v1/projects/3
+GET http://localhost:5000/api/v1/projects/3/stacks
 
 ###
 GET http://localhost:5000/api/v1/stacks
 ###
-GET http://localhost:5000/api/v1/stacks/18
+GET http://localhost:5000/api/v1/stacks/4
 
+###
+GET http://localhost:5000/api/v1/stacks/4/pictures
+
+###
+GET http://localhost:5000/api/v1/stacks/3/pictures
 
 
 
