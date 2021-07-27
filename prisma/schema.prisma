@@ -31,20 +31,21 @@ model Job {
 }
 
 model Project {
-  id          String    @id @default(uuid())
-  name        String
-  description String
-  startDate   DateTime
-  endDate     DateTime
-  logoUrl     String
-  linkUrl     String
-  github      String?
-  job         Job?      @relation(fields: [jobId], references: [id])
-  jobId       String
-  stacks      Stack[]
-  formation   Formation @relation(fields: [formationId], references: [id])
-  formationId String
-  pictures    Picture[]
+  id               String    @id @default(uuid())
+  name             String
+  description      String
+  startDate        DateTime
+  endDate          DateTime
+  logoUrl          String
+  linkUrl          String
+  github           String?
+  job              Job?      @relation(fields: [jobId], references: [id])
+  jobId            String
+  stacks           Stack[]
+  formation        Formation @relation(fields: [formationId], references: [id])
+  formationId      String
+  pictures         Picture[]
+  descriptionStack String
 
 }
 
